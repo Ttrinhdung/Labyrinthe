@@ -11,7 +11,7 @@
 
 from listeJoueurs import *
 from plateau import *
-
+#Flofloww
 
 def Labyrinthe(nomsJoueurs=["joueur1","joueurs2"],nbTresors=24, nbTresorsMax=0):
     """
