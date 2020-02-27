@@ -28,6 +28,15 @@ def Carte( nord, est, sud, ouest, tresor=0, pions=[]):
     tresor est le numéro du trésor qui se trouve sur la carte (0 s'il n'y a pas de trésor)
     pions est la liste des pions qui sont posés sur la carte (un pion est un entier entre 1 et 4)
     """
+    d=dict()
+    d["nord"]=nord
+    d["est"]=est
+    d["sud"]=sud
+    d["ouest"]=ouest
+    d["tresor"]=0
+    d["pions"]=[]
+
+    return d
     pass
 
 def estValide(c):
@@ -35,6 +44,20 @@ def estValide(c):
     retourne un booléen indiquant si la carte est valide ou non c'est à dire qu'elle a zéro un ou deux murs
     paramètre: c une carte
     """
+    cptmur=0
+    if ["nord"]==True:
+      cptmur=+1
+    elif ["est"]==True:
+      cptmur=+1
+    elif ["sud"]==True:
+      cptmur=+1
+    elif ["ouest"]==True:
+      cptmur=+1
+
+    if cptmur<=3:
+      return True
+    else: 
+      return False  
     pass
 
 def murNord(c):
@@ -42,6 +65,10 @@ def murNord(c):
     retourne un booléen indiquant si la carte possède un mur au nord
     paramètre: c une carte
     """
+    if ["nord"]==True:
+      return True
+    else:
+      return False
     pass
 
 def murSud(c):
@@ -49,6 +76,10 @@ def murSud(c):
     retourne un booléen indiquant si la carte possède un mur au sud
     paramètre: c une carte
     """
+     if ["sud"]==True:
+      return True
+    else:
+      return False
     pass
 
 def murEst(c):
@@ -56,6 +87,10 @@ def murEst(c):
     retourne un booléen indiquant si la carte possède un mur à l'est
     paramètre: c une carte
     """
+     if ["est"]==True:
+      return True
+    else:
+      return False
     pass
 
 def murOuest(c):
@@ -63,6 +98,10 @@ def murOuest(c):
     retourne un booléen indiquant si la carte possède un mur à l'ouest
     paramètre: c une carte
     """
+     if ["ouest"]==True:
+      return True
+    else:
+      return False
     pass
 
 def getListePions(c):
@@ -70,6 +109,7 @@ def getListePions(c):
     retourne la liste des pions se trouvant sur la carte
     paramètre: c une carte
     """
+    return pions
     pass
 
 def setListePions(c,listePions):
