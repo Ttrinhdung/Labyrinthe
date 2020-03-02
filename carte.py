@@ -33,11 +33,10 @@ def Carte( nord, est, sud, ouest, tresor=0, pions=[]):
     d["est"]=est
     d["sud"]=sud
     d["ouest"]=ouest
-    d["tresor"]=0
-    d["pions"]=[]
+    d["tresor"]=tresor
+    d["pions"]=pions
 
     return d
-    pass
 
 def estValide(c):
     """
@@ -45,71 +44,70 @@ def estValide(c):
     paramètre: c une carte
     """
     cptmur=0
-    if ["nord"]==True:
-      cptmur=+1
-    elif ["est"]==True:
-      cptmur=+1
-    elif ["sud"]==True:
-      cptmur=+1
-    elif ["ouest"]==True:
-      cptmur=+1
+    if c["nord"]==True:
+      cptmur+=1
+    if c["est"]==True:
+      cptmur+=1
+    if c["sud"]==True:
+      cptmur+=1
+    if c["ouest"]==True:
+      cptmur+=1
 
     if cptmur<=3:
       return True
     else: 
       return False  
-    pass
 
 def murNord(c):
     """
     retourne un booléen indiquant si la carte possède un mur au nord
     paramètre: c une carte
     """
-    if ["nord"]==True:
+    if c["nord"]==True:
       return True
     else:
       return False
-    pass
+
 
 def murSud(c):
     """
     retourne un booléen indiquant si la carte possède un mur au sud
     paramètre: c une carte
     """
-     if ["sud"]==True:
+    if c["sud"]==True:
       return True
     else:
       return False
-    pass
+
 
 def murEst(c):
     """
     retourne un booléen indiquant si la carte possède un mur à l'est
     paramètre: c une carte
     """
-     if ["est"]==True:
+    if c["est"]==True:
       return True
     else:
       return False
-    pass
+
 
 def murOuest(c):
     """
     retourne un booléen indiquant si la carte possède un mur à l'ouest
     paramètre: c une carte
     """
-     if ["ouest"]==True:
+    if c["ouest"]==True:
       return True
     else:
       return False
-    pass
+
 
 def getListePions(c):
     """
     retourne la liste des pions se trouvant sur la carte
     paramètre: c une carte
     """
-    return pions
+    return c["pions"]
     pass
 
 def setListePions(c,listePions):
@@ -119,6 +117,10 @@ def setListePions(c,listePions):
                 listePions: la liste des pions à poser
     Cette fonction ne retourne rien mais modifie la carte
     """
+    
+
+
+
     pass
 
 def getNbPions(c):
