@@ -78,6 +78,7 @@ def getJoueurCourant(joueurs):
     paramètre: joueurs la liste des joueurs
     résultat: le joueur courant
     """
+    return ListeJoueurs[1]
     pass
 
 def joueurCourantTrouveTresor(joueurs):
