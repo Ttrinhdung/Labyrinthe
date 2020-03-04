@@ -108,7 +108,6 @@ def getListePions(c):
     paramètre: c une carte
     """
     return c["pions"]
-    pass
 
 def setListePions(c,listePions):
     """
@@ -117,18 +116,15 @@ def setListePions(c,listePions):
                 listePions: la liste des pions à poser
     Cette fonction ne retourne rien mais modifie la carte
     """
-    
+    c["pions"]=listePions
 
-
-
-    pass
 
 def getNbPions(c):
     """
     retourne le nombre de pions se trouvant sur la carte
     paramètre: c une carte
     """
-    pass
+    return len(c["pions"]
 
 def possedePion(c,pion):
     """
@@ -136,7 +132,11 @@ def possedePion(c,pion):
     paramètres: c une carte
                 pion un entier compris entre 1 et 4
     """
-    pass
+    if pion in c["pions"]:
+      return True
+    else:
+      return False
+
 
 
 def getTresor(c):
@@ -144,7 +144,7 @@ def getTresor(c):
     retourne la valeur du trésor qui se trouve sur la carte (0 si pas de trésor)
     paramètre: c une carte
     """
-    pass
+    return c["tresor"]
 
 def prendreTresor(c):
     """
@@ -152,7 +152,11 @@ def prendreTresor(c):
     paramètre: c une carte
     résultat l'entier représentant le trésor qui était sur la carte
     """
-    pass
+    a=0
+    a=c["tresor"]
+    c["tresor"]=0
+    return a
+
 def mettreTresor(c,tresor):
     """
     met le trésor passé en paramètre sur la carte et retourne la valeur de l'ancien trésor
@@ -160,7 +164,10 @@ def mettreTresor(c,tresor):
                 tresor un entier positif
     résultat l'entier représentant le trésor qui était sur la carte
     """
-    pass
+    a=0
+    a=c["tresor"]
+    c["tresor"]=tresor
+    return a
 
 def prendrePion(c, pion):
     """
@@ -267,3 +274,23 @@ def passageEst(carte1,carte2):
     résultat un booléen    
     """
     pass
+
+if __name__=='__main__':
+
+c=Carte(True,False,True,True,4,[1,2,4])
+print(c)
+print(murNord(c))
+print(getListePions(c))
+print(setListePions(c,[2,3]))
+print(c["pions"])
+print(c)
+print(getNbPions(c))
+print(possedePion(c,4))
+print(getTresor(c))
+print(prendreTresor(c))
+print(c["tresor"])
+print(mettreTresor(c,1))
+print(c["tresor"])
+print(c)
+print(prendrePion(c,2))
+print(c)
