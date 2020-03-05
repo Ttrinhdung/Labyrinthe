@@ -53,7 +53,7 @@ def estValide(c):
     if c["ouest"]==True:
       cptmur+=1
 
-    if cptmur<=3:
+    if cptmur<=2:
       return True
     else: 
       return False  

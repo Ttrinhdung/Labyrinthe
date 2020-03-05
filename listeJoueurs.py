@@ -150,3 +150,6 @@ def joueurCourantAFini(joueurs):
     résultat: un booleen indiquant si le joueur courant a fini
     """
     pass
+
+if __name__=="__main__":
+  print("toto")
