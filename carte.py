@@ -63,10 +63,7 @@ def murNord(c):
     retourne un booléen indiquant si la carte possède un mur au nord
     paramètre: c une carte
     """
-    if c["nord"]==True:
-      return True
-    else:
-      return False
+    return c["nord"]
 
 
 def murSud(c):
@@ -74,10 +71,7 @@ def murSud(c):
     retourne un booléen indiquant si la carte possède un mur au sud
     paramètre: c une carte
     """
-    if c["sud"]==True:
-      return True
-    else:
-      return False
+    return c["sud"]
 
 
 def murEst(c):
@@ -85,21 +79,14 @@ def murEst(c):
     retourne un booléen indiquant si la carte possède un mur à l'est
     paramètre: c une carte
     """
-    if c["est"]==True:
-      return True
-    else:
-      return False
-
+    return c["est"]
 
 def murOuest(c):
     """
     retourne un booléen indiquant si la carte possède un mur à l'ouest
     paramètre: c une carte
     """
-    if c["ouest"]==True:
-      return True
-    else:
-      return False
+    return c["ouest"]
 
 
 def getListePions(c):
@@ -185,6 +172,7 @@ def poserPion(c, pion):
                 pion un entier compris entre 1 et 4
     Cette fonction modifie la carte mais ne retourne rien
     """
+
     pass
 
 def tournerHoraire(c):
@@ -193,7 +181,15 @@ def tournerHoraire(c):
     paramètres: c une carte
     Cette fonction modifie la carte mais ne retourne rien    
     """
-    pass
+    N=c["nord"]
+    E=c["est"]
+    S=c["sud"]
+    O=c["ouest"]
+
+    c["nord"]=O
+    c["est"]=N
+    c["sud"]=E
+    c["ouest"]=S
 
 def tournerAntiHoraire(c):
     """
@@ -201,14 +197,28 @@ def tournerAntiHoraire(c):
     paramètres: c une carte
     Cette fonction modifie la carte mais ne retourne rien    
     """
-    pass
+    N=c["nord"]
+    E=c["est"]
+    S=c["sud"]
+    O=c["ouest"]
+
+    c["nord"]=E
+    c["est"]=S
+    c["sud"]=O
+    c["ouest"]=N
+    
 def tourneAleatoire(c):
     """
     faire tourner la carte d'un nombre de tours aléatoire
     paramètres: c une carte
     Cette fonction modifie la carte mais ne retourne rien    
     """
-    pass
+    from random import randrange
+    nombreAleatoire = randrange(1,10)
+    print(nombreAleatoire)
+
+    for i in range(nombreAleatoire):
+      tournerHoraire(c) 
 
 def coderMurs(c):
     """
@@ -280,6 +290,9 @@ if __name__=='__main__':
 c=Carte(True,False,True,True,4,[1,2,4])
 print(c)
 print(murNord(c))
+print(murEst(c))
+print(murSud(c))
+print(murOuest(c))
 print(getListePions(c))
 print(setListePions(c,[2,3]))
 print(c["pions"])
@@ -293,4 +306,12 @@ print(mettreTresor(c,1))
 print(c["tresor"])
 print(c)
 print(prendrePion(c,2))
+print(c)
+tournerHoraire(c)
+print(c)
+tournerAntiHoraire(c)
+print(c)
+tournerAntiHoraire(c)
+print(c)
+tourneAleatoire(c)
 print(c)
