@@ -48,6 +48,7 @@ def tresorTrouve(joueur):
         joueur le joueur
     la fonction ne retourne rien mais modifie le joueur
     """
+    pop.joueur[1][0]
 
     pass
 
