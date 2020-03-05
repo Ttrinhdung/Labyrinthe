@@ -26,10 +26,9 @@ def ajouterTresor(joueur,tresor):
         tresor un entier strictement positif
     la fonction ne retourne rien mais modifie le joueur
     """
-    if tresor not in Joueur[1]:
-      Joueur[1].append(tresor)
-    else:
-      pass
+    if tresor not in joueur[1]:
+      joueur[1].append(tresor)
+
 def prochainTresor(joueur):
     """
     retourne le prochain trésor à trouver d'un joueur, retourne None si aucun trésor n'est à trouver
@@ -37,10 +36,10 @@ def prochainTresor(joueur):
         joueur le joueur
     résultat un entier représentant le trésor ou None
     """
-    if len(Joueur[1])>=2:
+    if len(joueur[1])==0:
       return None
     else:
-      return ajouterTresor[1]
+      return joueur[1][0]
 
 def tresorTrouve(joueur):
     """ 
@@ -49,7 +48,8 @@ def tresorTrouve(joueur):
         joueur le joueur
     la fonction ne retourne rien mais modifie le joueur
     """
-    pop.Joueur[listeTresoraTrouve[1]]
+
+    pass
 
 def getNbTresorsRestants(joueur):
     """
@@ -57,7 +57,7 @@ def getNbTresorsRestants(joueur):
     paramètre: joueur le joueur
     résultat: le nombre de trésors attribués au joueur
     """
-    return len(Joueur[1])
+    return len(joueur[1])
 
 def getNom(joueur):
     """
@@ -65,10 +65,16 @@ def getNom(joueur):
     paramètre: joueur le joueur
     résultat: le nom du joueur 
     """
-    return Joueur[0]
-print(Joueur('pat'))
-print(ajouterTresor('pat',1))
-print(prochainTresor('pat'))
-print(tresorTrouve('pat'))
-print(getNbTresorsRestants('pat'))
-print(getNom('pat'))
+    joueurnom=joueur[0]
+    return joueurnom
+
+if __name__=="__main__":
+  thomas=Joueur('thomas')
+  print(thomas)
+  ajouterTresor(thomas,2)
+  print(thomas)
+  (prochainTresor(thomas))
+  '''print(tresorTrouve(thomas))
+  '''
+  print(getNbTresorsRestants(thomas))
+  print(getNom(thomas))
