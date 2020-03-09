@@ -163,7 +163,9 @@ def prendrePion(c, pion):
                 pion un entier compris entre 1 et 4
     Cette fonction modifie la carte mais ne retourne rien
     """
-    pass
+    for i in range(len(c["pions"])):
+      if c["pions"][i-1]==pion:
+        del c["pions"][i-1]
 
 def poserPion(c, pion):
     """
@@ -255,81 +257,83 @@ def decoderMurs(c,code):
       c["est"]=False
       c["sud"]=False
       c["ouest"]=False
-    if code==1:
+    elif code==1:
       c["nord"]=True
       c["est"]=False
       c["sud"]=False
       c["ouest"]=False
-    if code==2:
+    elif code==2:
       c["nord"]=False
       c["est"]=True
       c["sud"]=False
       c["ouest"]=False
-    if code==3:
+    elif code==3:
       c["nord"]=True
       c["est"]=True
       c["sud"]=False
       c["ouest"]=False 
-    if code==4:
+    elif code==4:
       c["nord"]=False
       c["est"]=False
       c["sud"]=True
       c["ouest"]=False
-    if code==5:
+    elif code==5:
       c["nord"]=True
       c["est"]=False
       c["sud"]=True
       c["ouest"]=False
-    if code==6:
+    elif code==6:
       c["nord"]=False
       c["est"]=True
       c["sud"]=True
       c["ouest"]=False
-    if code==7:
+    elif code==7:
       c["nord"]=True
       c["est"]=True
       c["sud"]=True
       c["ouest"]=False
-    if code==8:
+    elif code==8:
       c["nord"]=False
       c["est"]=False
       c["sud"]=False
       c["ouest"]=True 
-    if code==9:
+    elif code==9:
       c["nord"]=True
       c["est"]=False
       c["sud"]=False
       c["ouest"]=True
-    if code==10:
+    elif code==10:
       c["nord"]=False
       c["est"]=True
       c["sud"]=False
       c["ouest"]=True
-    if code==11:
+    elif code==11:
       c["nord"]=True
       c["est"]=True
       c["sud"]=False
       c["ouest"]=True
-    if code==12:
+    elif code==12:
       c["nord"]=False
       c["est"]=False
       c["sud"]=True
       c["ouest"]=True
-    if code==13:
+    elif code==13:
       c["nord"]=True
       c["est"]=False
       c["sud"]=True
       c["ouest"]=True 
-    if code==14:
+    elif code==14:
       c["nord"]=False
       c["est"]=True
       c["sud"]=True
       c["ouest"]=True  
-    if code==15:
+    elif code==15:
       c["nord"]=True
       c["est"]=True
       c["sud"]=True
-      c["ouest"]=True              
+      c["ouest"]=True
+    else:
+      print("Code invalide")
 def toChar(c):
     """
     fournit le caractère semi graphique correspondant à la carte (voir la variable listeCartes au début de ce script)
@@ -389,9 +393,10 @@ def passageEst(carte1,carte2):
       return False
 
 
-c=Carte(True,False,False,False,4,[1,2,4])
+c=Carte(True,False,False,True,4,[1,2,4])
 c2=Carte(True,True,False,False,3,[])
 print(c)
+print(estValide(c))
 print(murNord(c))
 print(murEst(c))
 print(murSud(c))
@@ -401,11 +406,11 @@ print(setListePions(c,[2,3]))
 print(c["pions"])
 print(c)
 print(getNbPions(c))
-print(possedePion(c,4))
+print(possedePion(c,3))
 print(getTresor(c))
 print(prendreTresor(c))
 print(c["tresor"])
-print(mettreTresor(c,1))
+print(mettreTresor(c,2))
 print(c["tresor"])
 print(c)
 print(prendrePion(c,2))
@@ -413,7 +418,6 @@ print(c)
 tournerHoraire(c)
 print(c)
 tournerAntiHoraire(c)
-print(c)
 print(c)
 print(poserPion(c,2))
 print(c)
@@ -424,8 +428,9 @@ print(passageNord(c,c2))
 print(passageSud(c,c2))
 print(passageOuest(c,c2))
 print(passageEst(c,c2))
-print(decoderMurs(c,12))
+print(decoderMurs(c,6))
 print(coderMurs(c))
 print(c)
 print(toChar(c))
+
 
