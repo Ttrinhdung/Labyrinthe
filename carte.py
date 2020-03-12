@@ -251,9 +251,25 @@ def decoderMurs(c,code):
     paramètres c une carte
                code un entier codant les murs d'une carte
     Cette fonction modifie la carte mais ne retourne rien
-    """    
-    bin(code)
-    return code
+    """   
+    code=format(code, '#06b')[2:]
+    if code[0]=="1":
+      c["ouest"]=True
+    else:
+      c["ouest"]=False
+    if code[1]=="1":
+      c["sud"]=True
+    else:
+      c["sud"]=False
+    if code[2]=="1":
+      c["est"]=True
+    else:
+      c["est"]=False
+    if code[3]=="1":
+      c["nord"]=True
+    else:
+      c["nord"]=False
+
 def toChar(c):
     """
     fournit le caractère semi graphique correspondant à la carte (voir la variable listeCartes au début de ce script)
@@ -349,11 +365,12 @@ if __name__=="__main__":
   print(passageSud(c,c2))
   print(passageOuest(c,c2))
   print(passageEst(c,c2))
-  print(decoderMurs(c,6))
+  print(decoderMurs(c,7))
   print(coderMurs(c))
   print(c)
   print(toChar(c))
 
-  print(decoderMurs(c,4))
+  
+
 
 
