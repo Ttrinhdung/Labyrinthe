@@ -18,10 +18,9 @@ def ListeJoueurs(nomsJoueurs):
     paramètre: nomsJoueurs une liste de chaines de caractères
     résultat: la liste des joueurs avec un joueur courant mis à 0
     """
-    ListeJoueurCourant=['']
-    ListeJoueurCourant=[ListeJoueurCourant]+[nomsJoueurs]
-    pass
-
+    ListeJoueurCourant=0
+    return(Joueur(nomsJoueurs),ListeJoueurCourant)
+    
 def ajouterJoueur(joueurs, joueur):
     """
     ajoute un nouveau joueur à la fin de la liste
@@ -30,7 +29,6 @@ def ajouterJoueur(joueurs, joueur):
     cette fonction ne retourne rien mais modifie la liste des joueurs
     """
     joueurs.append(joueur)
-    pass
 
 def initAleatoireJoueurCourant(joueurs):
     """
@@ -38,8 +36,7 @@ def initAleatoireJoueurCourant(joueurs):
     paramètre: joueurs un liste de joueurs
     cette fonction ne retourne rien mais modifie la liste des joueurs
     """
-    ListeJoueurs[1]=random.choice(joueurs)
-    pass
+    ListeJoueurs[0]=random.choice(joueurs)
 
 def distribuerTresors(joueurs,nbTresors=24, nbTresorMax=0):
     """
@@ -53,7 +50,7 @@ def distribuerTresors(joueurs,nbTresors=24, nbTresorMax=0):
                              de trésor possible  
     cette fonction ne retourne rien mais modifie la liste des joueurs
     """
-    pass
+    random.randit(1,24)
 
 def changerJoueurCourant(joueurs):
     """
@@ -61,7 +58,9 @@ def changerJoueurCourant(joueurs):
     paramètres: joueurs la liste des joueurs
     cette fonction ne retourne rien mais modifie la liste des joueurs
     """
-    pass
+    i=1
+    joueurs[1][i]
+    i=i+1
 
 def getNbJoueurs(joueurs):
     """
@@ -70,7 +69,6 @@ def getNbJoueurs(joueurs):
     résultat: le nombre de joueurs de la partie
     """
     return len(joueurs)
-    pass
 
 def getJoueurCourant(joueurs):
     """
@@ -78,8 +76,7 @@ def getJoueurCourant(joueurs):
     paramètre: joueurs la liste des joueurs
     résultat: le joueur courant
     """
-    return ListeJoueurs[1]
-    pass
+    return ListeJoueurs[0]
 
 def joueurCourantTrouveTresor(joueurs):
     """
@@ -88,7 +85,7 @@ def joueurCourantTrouveTresor(joueurs):
     paramètre: joueurs la liste des joueurs
     cette fonction ne retourne rien mais modifie la liste des joueurs
     """
-    pop.Joueur
+    
     pass
 
 def nbTresorsRestantsJoueur(joueurs,numJoueur):
@@ -152,4 +149,5 @@ def joueurCourantAFini(joueurs):
     pass
 
 if __name__=="__main__":
-  print("toto")
+  toto=ListeJoueurs(['toto','titi','tata'])
+  print (ListeJoueurs([toto])
