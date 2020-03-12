@@ -23,21 +23,33 @@ def Matrice(nbLignes,nbColonnes,valeurParDefaut=0):
       valeurParDefaut la valeur par défaut
     résultat la matrice ayant les bonnes propriétés
     """
-    pass
+    M=[]
+    aux=[]
+    i=0
+    j=0
+    while i<nbColonnes:
+      aux.append(valeurParDefaut)
+      i+=1
+    
+    while j<nbLignes:
+      M.append(aux)
+      j+=1 
+     
+    return M
 
 def getNbLignes(matrice):
     """
     retourne le nombre de lignes de la matrice
     paramètre: matrice la matrice considérée
     """
-    pass
+    return len(matrice)
 
 def getNbColonnes(matrice):
     """
     retourne le nombre de colonnes de la matrice
     paramètre: matrice la matrice considérée
     """
-    pass
+    return len(matrice[0])
 
 def getVal(matrice,ligne,colonne):
     """
@@ -46,7 +58,7 @@ def getVal(matrice,ligne,colonne):
                 ligne le numéro de la ligne (en commençant par 0)
                 colonne le numéro de la colonne (en commençant par 0)
     """
-    pass
+    return matrice[ligne-1][colonne-1]
 
 def setVal(matrice,ligne,colonne,valeur):
     """
@@ -57,7 +69,7 @@ def setVal(matrice,ligne,colonne,valeur):
                 valeur la valeur à stocker dans la matrice
     cette fonction ne retourne rien mais modifie la matrice
     """
-    pass
+    matrice[ligne-1][colonne-1]=valeur
 
 
 #------------------------------------------        
@@ -107,3 +119,13 @@ def decalageColonneEnBas(matrice, numCol, nouvelleValeur=0):
     """
     pass
 
+if __name__=="__main__":
+
+  m=Matrice(7,4,0)
+  print(m)
+  print(getNbLignes(m))
+  print(getNbColonnes(m))
+  print(getVal(m,3,3))
+  print(setVal(m,0,0,5))
+  print(m)
+  print(getVal(m,1,3))

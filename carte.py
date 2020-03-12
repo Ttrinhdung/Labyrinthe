@@ -252,88 +252,8 @@ def decoderMurs(c,code):
                code un entier codant les murs d'une carte
     Cette fonction modifie la carte mais ne retourne rien
     """    
-    if code==0:
-      c["nord"]=False
-      c["est"]=False
-      c["sud"]=False
-      c["ouest"]=False
-    elif code==1:
-      c["nord"]=True
-      c["est"]=False
-      c["sud"]=False
-      c["ouest"]=False
-    elif code==2:
-      c["nord"]=False
-      c["est"]=True
-      c["sud"]=False
-      c["ouest"]=False
-    elif code==3:
-      c["nord"]=True
-      c["est"]=True
-      c["sud"]=False
-      c["ouest"]=False 
-    elif code==4:
-      c["nord"]=False
-      c["est"]=False
-      c["sud"]=True
-      c["ouest"]=False
-    elif code==5:
-      c["nord"]=True
-      c["est"]=False
-      c["sud"]=True
-      c["ouest"]=False
-    elif code==6:
-      c["nord"]=False
-      c["est"]=True
-      c["sud"]=True
-      c["ouest"]=False
-    elif code==7:
-      c["nord"]=True
-      c["est"]=True
-      c["sud"]=True
-      c["ouest"]=False
-    elif code==8:
-      c["nord"]=False
-      c["est"]=False
-      c["sud"]=False
-      c["ouest"]=True 
-    elif code==9:
-      c["nord"]=True
-      c["est"]=False
-      c["sud"]=False
-      c["ouest"]=True
-    elif code==10:
-      c["nord"]=False
-      c["est"]=True
-      c["sud"]=False
-      c["ouest"]=True
-    elif code==11:
-      c["nord"]=True
-      c["est"]=True
-      c["sud"]=False
-      c["ouest"]=True
-    elif code==12:
-      c["nord"]=False
-      c["est"]=False
-      c["sud"]=True
-      c["ouest"]=True
-    elif code==13:
-      c["nord"]=True
-      c["est"]=False
-      c["sud"]=True
-      c["ouest"]=True 
-    elif code==14:
-      c["nord"]=False
-      c["est"]=True
-      c["sud"]=True
-      c["ouest"]=True  
-    elif code==15:
-      c["nord"]=True
-      c["est"]=True
-      c["sud"]=True
-      c["ouest"]=True
-    else:
-      print("Code invalide")
+    bin(code)
+    return code
 def toChar(c):
     """
     fournit le caractère semi graphique correspondant à la carte (voir la variable listeCartes au début de ce script)
@@ -392,45 +312,48 @@ def passageEst(carte1,carte2):
     else:
       return False
 
+if __name__=="__main__":
 
-c=Carte(True,False,False,True,4,[1,2,4])
-c2=Carte(True,True,False,False,3,[])
-print(c)
-print(estValide(c))
-print(murNord(c))
-print(murEst(c))
-print(murSud(c))
-print(murOuest(c))
-print(getListePions(c))
-print(setListePions(c,[2,3]))
-print(c["pions"])
-print(c)
-print(getNbPions(c))
-print(possedePion(c,3))
-print(getTresor(c))
-print(prendreTresor(c))
-print(c["tresor"])
-print(mettreTresor(c,2))
-print(c["tresor"])
-print(c)
-print(prendrePion(c,2))
-print(c)
-tournerHoraire(c)
-print(c)
-tournerAntiHoraire(c)
-print(c)
-print(poserPion(c,2))
-print(c)
-print(poserPion(c,1))
-print(c)
-print(prendrePion(c,1))
-print(passageNord(c,c2))
-print(passageSud(c,c2))
-print(passageOuest(c,c2))
-print(passageEst(c,c2))
-print(decoderMurs(c,6))
-print(coderMurs(c))
-print(c)
-print(toChar(c))
+  c=Carte(True,False,False,True,4,[1,2,4])
+  c2=Carte(True,True,False,False,3,[])
+  print(c)
+  print(estValide(c))
+  print(murNord(c))
+  print(murEst(c))
+  print(murSud(c))
+  print(murOuest(c))
+  print(getListePions(c))
+  print(setListePions(c,[2,3]))
+  print(c["pions"])
+  print(c)
+  print(getNbPions(c))
+  print(possedePion(c,3))
+  print(getTresor(c))
+  print(prendreTresor(c))
+  print(c["tresor"])
+  print(mettreTresor(c,2))
+  print(c["tresor"])
+  print(c)
+  print(prendrePion(c,2))
+  print(c)
+  tournerHoraire(c)
+  print(c)
+  tournerAntiHoraire(c)
+  print(c)
+  print(poserPion(c,2))
+  print(c)
+  print(poserPion(c,1))
+  print(c)
+  print(prendrePion(c,1))
+  print(passageNord(c,c2))
+  print(passageSud(c,c2))
+  print(passageOuest(c,c2))
+  print(passageEst(c,c2))
+  print(decoderMurs(c,6))
+  print(coderMurs(c))
+  print(c)
+  print(toChar(c))
+
+  print(decoderMurs(c,4))
 
 
