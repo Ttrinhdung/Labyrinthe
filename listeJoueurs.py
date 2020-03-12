@@ -148,6 +148,8 @@ def joueurCourantAFini(joueurs):
     """
     pass
 
-if __name__=="__main__":
-  toto=ListeJoueurs(['toto','titi','tata'])
-  print (ListeJoueurs([toto])
+
+
+    toto=ListeJoueurs(["titi","tete","marc","lisa"])
+    print(ListeJoueurs(toto))
+    print(toto)
