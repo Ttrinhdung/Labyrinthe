@@ -19,7 +19,11 @@ def ListeJoueurs(nomsJoueurs):
     résultat: la liste des joueurs avec un joueur courant mis à 0
     """
     ListeJoueurCourant=0
-    return(Joueur(nomsJoueurs),ListeJoueurCourant)
+    listeJoueur=[]
+    for i in nomsJoueurs:
+      listeJoueur.append(Joueur(i))
+    return(listeJoueur, ListeJoueurCourant)
+    
     
 def ajouterJoueur(joueurs, joueur):
     """
@@ -28,7 +32,8 @@ def ajouterJoueur(joueurs, joueur):
                 joueur le joueur à ajouter
     cette fonction ne retourne rien mais modifie la liste des joueurs
     """
-    joueurs.append(joueur)
+    for i in joueur:
+      joueurs[0].append(Joueur(i))
 
 def initAleatoireJoueurCourant(joueurs):
     """
@@ -36,7 +41,9 @@ def initAleatoireJoueurCourant(joueurs):
     paramètre: joueurs un liste de joueurs
     cette fonction ne retourne rien mais modifie la liste des joueurs
     """
-    ListeJoueurs[0]=random.choice(joueurs)
+    random.choice(joueurs)
+    
+  
 
 def distribuerTresors(joueurs,nbTresors=24, nbTresorMax=0):
     """
@@ -50,7 +57,12 @@ def distribuerTresors(joueurs,nbTresors=24, nbTresorMax=0):
                              de trésor possible  
     cette fonction ne retourne rien mais modifie la liste des joueurs
     """
-    random.randit(1,24)
+    for i in joueurs:
+      if nbTresorMax==0:
+        Joueur(i).random.randint(1,24)
+      else:
+        Joueur(i).random.randint(1,nbTresors)
+
 
 def changerJoueurCourant(joueurs):
     """
@@ -149,7 +161,11 @@ def joueurCourantAFini(joueurs):
     pass
 
 
-
+if __name__=="__main__":
     toto=ListeJoueurs(["titi","tete","marc","lisa"])
-    print(ListeJoueurs(toto))
     print(toto)
+    ajouterJoueur(toto, ['tim'])
+    print(toto)
+    (initAleatoireJoueurCourant(toto))
+    print(toto)
+    distribuerTresors(toto,nbTresors=24,nbTresorMax=0)
