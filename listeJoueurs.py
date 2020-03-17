@@ -41,7 +41,7 @@ def initAleatoireJoueurCourant(joueurs):
     paramètre: joueurs un liste de joueurs
     cette fonction ne retourne rien mais modifie la liste des joueurs
     """
-    random.choice(joueurs)
+    random.choice(joueurs[0])
     
   
 
@@ -57,11 +57,18 @@ def distribuerTresors(joueurs,nbTresors=24, nbTresorMax=0):
                              de trésor possible  
     cette fonction ne retourne rien mais modifie la liste des joueurs
     """
-    for i in joueurs:
-      if nbTresorMax==0:
-        Joueur(i).random.randint(1,24)
-      else:
-        Joueur(i).random.randint(1,nbTresors)
+    i=0
+    j=0
+    if nbTresorMax==0:
+      nbTresorMax=-1
+      while i<nbTresorMax and getNbTresorRestants(joueurs[0][-1])!=nbTresorMax:
+        ajouterTresor(joueurs[0][y],i)
+        i=i+1
+        if j==len(joueurs[0])-1:
+          j=0
+        else:
+          j=j+1
+
 
 
 def changerJoueurCourant(joueurs):
@@ -70,9 +77,8 @@ def changerJoueurCourant(joueurs):
     paramètres: joueurs la liste des joueurs
     cette fonction ne retourne rien mais modifie la liste des joueurs
     """
-    i=1
-    joueurs[1][i]
-    i=i+1
+    pass
+   
 
 def getNbJoueurs(joueurs):
     """
@@ -80,7 +86,7 @@ def getNbJoueurs(joueurs):
     paramètre: joueurs la liste des joueurs
     résultat: le nombre de joueurs de la partie
     """
-    return len(joueurs)
+    return len(joueurs[0])
 
 def getJoueurCourant(joueurs):
     """
@@ -169,3 +175,5 @@ if __name__=="__main__":
     (initAleatoireJoueurCourant(toto))
     print(toto)
     distribuerTresors(toto,nbTresors=24,nbTresorMax=0)
+    print(getNbJoueurs(toto))
+    print(changerJoueurCourant(toto))
