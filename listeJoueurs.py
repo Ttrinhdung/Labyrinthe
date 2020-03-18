@@ -62,7 +62,7 @@ def distribuerTresors(joueurs,nbTresors=24, nbTresorMax=0):
     if nbTresorMax==0:
       nbTresorMax=-1
       while i<nbTresorMax and getNbTresorRestants(joueurs[0][-1])!=nbTresorMax:
-        ajouterTresor(joueurs[0][y],i)
+        ajouterTresor(joueurs[0][j],i)
         i=i+1
         if j==len(joueurs[0])-1:
           j=0
@@ -77,7 +77,6 @@ def changerJoueurCourant(joueurs):
     paramètres: joueurs la liste des joueurs
     cette fonction ne retourne rien mais modifie la liste des joueurs
     """
-    pass
    
 
 def getNbJoueurs(joueurs):
@@ -94,7 +93,7 @@ def getJoueurCourant(joueurs):
     paramètre: joueurs la liste des joueurs
     résultat: le joueur courant
     """
-    return ListeJoueurs[0]
+    return joueurs[1]
 
 def joueurCourantTrouveTresor(joueurs):
     """
@@ -103,8 +102,8 @@ def joueurCourantTrouveTresor(joueurs):
     paramètre: joueurs la liste des joueurs
     cette fonction ne retourne rien mais modifie la liste des joueurs
     """
-    
-    pass
+    tresorTrouve(joueurs)
+
 
 def nbTresorsRestantsJoueur(joueurs,numJoueur):
     """
@@ -174,6 +173,7 @@ if __name__=="__main__":
     print(toto)
     (initAleatoireJoueurCourant(toto))
     print(toto)
-    distribuerTresors(toto,nbTresors=24,nbTresorMax=0)
+    (distribuerTresors(toto,nbTresors=24,nbTresorMax=0))
     print(getNbJoueurs(toto))
     print(changerJoueurCourant(toto))
+    print(getJoueurCourant(toto))
