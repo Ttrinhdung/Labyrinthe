@@ -50,7 +50,6 @@ def tresorTrouve(joueur):
     """
     joueur[1][0].pop(0)
 
-    pass
 
 def getNbTresorsRestants(joueur):
     """

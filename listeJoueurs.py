@@ -41,7 +41,7 @@ def initAleatoireJoueurCourant(joueurs):
     paramètre: joueurs un liste de joueurs
     cette fonction ne retourne rien mais modifie la liste des joueurs
     """
-    random.choice(joueurs[0])
+    return random.choice(joueurs[0])
     
   
 
@@ -69,14 +69,13 @@ def distribuerTresors(joueurs,nbTresors=24, nbTresorMax=0):
         else:
           j=j+1
 
-
-
 def changerJoueurCourant(joueurs):
     """
     passe au joueur suivant (change le joueur courant donc)
     paramètres: joueurs la liste des joueurs
     cette fonction ne retourne rien mais modifie la liste des joueurs
     """
+
    
 
 def getNbJoueurs(joueurs):
@@ -102,7 +101,7 @@ def joueurCourantTrouveTresor(joueurs):
     paramètre: joueurs la liste des joueurs
     cette fonction ne retourne rien mais modifie la liste des joueurs
     """
-    tresorTrouve(joueurs)
+    ''''tresorTrouve(joueurs).pop(0)'''
 
 
 def nbTresorsRestantsJoueur(joueurs,numJoueur):
@@ -113,7 +112,7 @@ def nbTresorsRestantsJoueur(joueurs,numJoueur):
                 numJoueur le numéro du joueur
     résultat: le nombre de trésors que joueur numJoueur doit encore trouver
     """
-    pass
+    return getNbTresorsRestants(joueurs[numJoueur])
 
 def numJoueurCourant(joueurs):
     """
@@ -129,7 +128,8 @@ def nomJoueurCourant(joueurs):
     paramètre: joueurs la liste des joueurs
     résultat: le nom du joueur courant
     """
-    pass
+    return joueurs[getJoueurCourant(joueurs)]
+    
 
 def nomJoueur(joueurs,numJoueur):
     """
@@ -138,7 +138,7 @@ def nomJoueur(joueurs,numJoueur):
                 numJoueur le numéro du joueur    
     résultat: le nom du joueur numJoueur
     """
-    pass
+    return joueurs[0][numJoueur]
 
 def prochainTresorJoueur(joueurs,numJoueur):
     """
@@ -147,7 +147,7 @@ def prochainTresorJoueur(joueurs,numJoueur):
                 numJoueur le numéro du joueur    
     résultat: le prochain trésor du joueur numJoueur (un entier)
     """
-    pass
+    return prochainTresor(joueurs[0][numJoueur])
 
 def tresorCourant(joueurs):
     """
@@ -171,9 +171,13 @@ if __name__=="__main__":
     print(toto)
     ajouterJoueur(toto, ['tim'])
     print(toto)
-    (initAleatoireJoueurCourant(toto))
-    print(toto)
-    (distribuerTresors(toto,nbTresors=24,nbTresorMax=0))
+    print(initAleatoireJoueurCourant(toto))
+    print(distribuerTresors(toto,nbTresors=24,nbTresorMax=0))
     print(getNbJoueurs(toto))
     print(changerJoueurCourant(toto))
     print(getJoueurCourant(toto))
+    joueurCourantTrouveTresor(toto)
+    print(nomJoueurCourant(toto))
+    print(nbTresorsRestantsJoueur(toto,0))
+    print(nomJoueur(toto,1))
+    print(prochainTresorJoueur(toto,1))
