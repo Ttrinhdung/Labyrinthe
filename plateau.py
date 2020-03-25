@@ -22,8 +22,25 @@ def Plateau(nbJoueurs, nbTresors):
                 ont été placée de manière aléatoire
               - la carte amovible qui n'a pas été placée sur le plateau
     """
-    pass
+    nouveauPlateau=Matrice(7,7)
+    setVal(nouveauPlateau,0,0,Carte(True,False,False,True))
+    setVal(nouveauPlateau,0,2,Carte(True,False,False,False))
+    setVal(nouveauPlateau,0,4,Carte(True,False,False,False))
+    setVal(nouveauPlateau,0,6,Carte(True,False,False,False))
+    setVal(nouveauPlateau,2,0,Carte(False,False,False,True))
+    setVal(nouveauPlateau,2,2,Carte(False,False,False,True))
+    setVal(nouveauPlateau,2,4,Carte(True,False,False,False))
+    setVal(nouveauPlateau,2,6,Carte(False,True,False,False))
+    setVal(nouveauPlateau,4,0,Carte(False,False,False,True))
+    setVal(nouveauPlateau,4,2,Carte(False,False,True,False))
+    setVal(nouveauPlateau,4,4,Carte(False,True,False,False))
+    setVal(nouveauPlateau,4,6,Carte(False,True,False,False))
+    setVal(nouveauPlateau,6,0,Carte(False,False,True,True))
+    setVal(nouveauPlateau,6,2,Carte(False,False,True,False))
+    setVal(nouveauPlateau,6,4,Carte(False,False,True,False))
+    setVal(nouveauPlateau,6,6,Carte(False,True,True,False))
 
+    return nouveauPlateau
 
 
 def creerCartesAmovibles(tresorDebut,nbTresors):
@@ -35,7 +52,7 @@ def creerCartesAmovibles(tresorDebut,nbTresors):
                 nbTresors: le nombre total de trésor à créer
     résultat: la liste mélangée aléatoirement des cartes amovibles créees
     """
-    pass
+    
 
 def prendreTresorPlateau(plateau,lig,col,numTresor):
     """
@@ -120,3 +137,5 @@ def accessibleDist(plateau,ligD,colD,ligA,colA):
               de départ et la case d'arrivée
     """
     pass
+if __name__=="__main__":
+  print(Plateau(1,7))

@@ -58,7 +58,7 @@ def setVal(matrice,ligne,colonne,valeur):
                 valeur la valeur à stocker dans la matrice
     cette fonction ne retourne rien mais modifie la matrice
     """
-    matrice[ligne-1][colonne-1]=valeur
+    matrice[ligne][colonne]=valeur
 
 
 #------------------------------------------        
