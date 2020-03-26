@@ -11,6 +11,7 @@
 
 from matrice import *
 from carte import *
+from random import *
 
 def Plateau(nbJoueurs, nbTresors):
     """
@@ -22,26 +23,33 @@ def Plateau(nbJoueurs, nbTresors):
                 ont été placée de manière aléatoire
               - la carte amovible qui n'a pas été placée sur le plateau
     """
-    nouveauPlateau=Matrice(7,7)
-    setVal(nouveauPlateau,0,0,Carte(True,False,False,True))
-    setVal(nouveauPlateau,0,2,Carte(True,False,False,False))
-    setVal(nouveauPlateau,0,4,Carte(True,False,False,False))
-    setVal(nouveauPlateau,0,6,Carte(True,False,False,False))
-    setVal(nouveauPlateau,2,0,Carte(False,False,False,True))
-    setVal(nouveauPlateau,2,2,Carte(False,False,False,True))
-    setVal(nouveauPlateau,2,4,Carte(True,False,False,False))
-    setVal(nouveauPlateau,2,6,Carte(False,True,False,False))
-    setVal(nouveauPlateau,4,0,Carte(False,False,False,True))
-    setVal(nouveauPlateau,4,2,Carte(False,False,True,False))
-    setVal(nouveauPlateau,4,4,Carte(False,True,False,False))
-    setVal(nouveauPlateau,4,6,Carte(False,True,False,False))
-    setVal(nouveauPlateau,6,0,Carte(False,False,True,True))
-    setVal(nouveauPlateau,6,2,Carte(False,False,True,False))
-    setVal(nouveauPlateau,6,4,Carte(False,False,True,False))
-    setVal(nouveauPlateau,6,6,Carte(False,True,True,False))
 
-    return nouveauPlateau
+    p=dict()
+    p["nbJoueurs"]=nbJoueurs
+    p["nbTresors"]=nbTresors
+    p["plateau"]=nouveauPlateau=Matrice(7,7)
+    setVal(nouveauPlateau,1,1,Carte(True,False,False,True))
+    setVal(nouveauPlateau,1,3,Carte(True,False,False,False))
+    setVal(nouveauPlateau,1,5,Carte(True,False,False,False))
+    setVal(nouveauPlateau,1,7,Carte(True,False,False,False))
+    setVal(nouveauPlateau,3,1,Carte(False,False,False,True))
+    setVal(nouveauPlateau,3,3,Carte(False,False,False,True))
+    setVal(nouveauPlateau,3,5,Carte(True,False,False,False))
+    setVal(nouveauPlateau,3,7,Carte(False,True,False,False))
+    setVal(nouveauPlateau,5,1,Carte(False,False,False,True))
+    setVal(nouveauPlateau,5,3,Carte(False,False,True,False))
+    setVal(nouveauPlateau,5,5,Carte(False,True,False,False))
+    setVal(nouveauPlateau,5,7,Carte(False,True,False,False))
+    setVal(nouveauPlateau,7,1,Carte(False,False,True,True))
+    setVal(nouveauPlateau,7,3,Carte(False,False,True,False))
+    setVal(nouveauPlateau,7,5,Carte(False,False,True,False))
+    setVal(nouveauPlateau,7,7,Carte(False,True,True,False))
+    creerCartesAmovibles(1,nbTresors)
+    
+    
+    p["carteAmovible"]=0
 
+    return p
 
 def creerCartesAmovibles(tresorDebut,nbTresors):
     """
@@ -52,7 +60,37 @@ def creerCartesAmovibles(tresorDebut,nbTresors):
                 nbTresors: le nombre total de trésor à créer
     résultat: la liste mélangée aléatoirement des cartes amovibles créees
     """
-    
+    listeCartesAmovibles=[]
+    jonction=[1,2,4,8]
+    angle=[3,6,9,12]
+    toutDroit=[10,5]
+    i=0
+    while i<6:
+      i+=1
+      code=choice(jonction)
+      c=Carte(True,False,True,False)
+      decoderMurs(c,code)
+      listeCartesAmovibles.append(c)
+    j=0
+    while j<16:
+      j+=1
+      code=choice(angle)
+      c=Carte(True,False,True,False)
+      decoderMurs(c,code)
+      listeCartesAmovibles.append(c)
+    k=0
+    while k<12:
+      k+=1
+      code=choice(toutDroit)
+      c=Carte(True,False,True,False)
+      decoderMurs(c,code)
+      listeCartesAmovibles.append(c)
+    for i in range(nbTresors):
+      mettreTresor(listeCartesAmovibles[i],[i+1+tresorDebut])
+    shuffle(listeCartesAmovibles)
+    return listeCartesAmovibles
+
+
 
 def prendreTresorPlateau(plateau,lig,col,numTresor):
     """
@@ -138,4 +176,5 @@ def accessibleDist(plateau,ligD,colD,ligA,colA):
     """
     pass
 if __name__=="__main__":
-  print(Plateau(1,7))
+  print(Plateau(2,10))
+  creerCartesAmovibles(14,20)

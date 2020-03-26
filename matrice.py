@@ -58,7 +58,7 @@ def setVal(matrice,ligne,colonne,valeur):
                 valeur la valeur à stocker dans la matrice
     cette fonction ne retourne rien mais modifie la matrice
     """
-    matrice[ligne][colonne]=valeur
+    matrice[ligne-1][colonne-1]=valeur
 
 
 #------------------------------------------        
@@ -139,6 +139,7 @@ def decalageColonneEnBas(matrice, numCol, nouvelleValeur=0):
 if __name__=="__main__":
 
   m=Matrice(5,4,0)
+  print(setVal(m,4,3,1))
   print(m)
   print(getNbLignes(m))
   print(getNbColonnes(m))
