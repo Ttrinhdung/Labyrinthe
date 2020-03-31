@@ -27,27 +27,33 @@ def Plateau(nbJoueurs, nbTresors):
     p=dict()
     p["nbJoueurs"]=nbJoueurs
     p["nbTresors"]=nbTresors
-    p["plateau"]=nouveauPlateau=Matrice(7,7)
-    setVal(nouveauPlateau,1,1,Carte(True,False,False,True))
-    setVal(nouveauPlateau,1,3,Carte(True,False,False,False))
-    setVal(nouveauPlateau,1,5,Carte(True,False,False,False))
-    setVal(nouveauPlateau,1,7,Carte(True,False,False,False))
-    setVal(nouveauPlateau,3,1,Carte(False,False,False,True))
-    setVal(nouveauPlateau,3,3,Carte(False,False,False,True))
-    setVal(nouveauPlateau,3,5,Carte(True,False,False,False))
-    setVal(nouveauPlateau,3,7,Carte(False,True,False,False))
-    setVal(nouveauPlateau,5,1,Carte(False,False,False,True))
-    setVal(nouveauPlateau,5,3,Carte(False,False,True,False))
-    setVal(nouveauPlateau,5,5,Carte(False,True,False,False))
-    setVal(nouveauPlateau,5,7,Carte(False,True,False,False))
-    setVal(nouveauPlateau,7,1,Carte(False,False,True,True))
-    setVal(nouveauPlateau,7,3,Carte(False,False,True,False))
-    setVal(nouveauPlateau,7,5,Carte(False,False,True,False))
-    setVal(nouveauPlateau,7,7,Carte(False,True,True,False))
-    creerCartesAmovibles(1,nbTresors)
+    listeCartesAmovibles=creerCartesAmovibles(12,nbTresors)
+    p["plateau"]=nouveauPlateau=Matrice(7,7,0)
+    setVal(nouveauPlateau,0,0,Carte(True,False,False,True,0))
+    setVal(nouveauPlateau,0,2,Carte(True,False,False,False,1))
+    setVal(nouveauPlateau,0,4,Carte(True,False,False,False,2))
+    setVal(nouveauPlateau,0,6,Carte(True,False,False,False,0,[1,2,3,4]))
+    setVal(nouveauPlateau,2,0,Carte(False,False,False,True,3))
+    setVal(nouveauPlateau,2,2,Carte(False,False,False,True,4))
+    setVal(nouveauPlateau,2,4,Carte(True,False,False,False,5))
+    setVal(nouveauPlateau,2,6,Carte(False,True,False,False,6))
+    setVal(nouveauPlateau,4,0,Carte(False,False,False,True,7))
+    setVal(nouveauPlateau,4,2,Carte(False,False,True,False,8))
+    setVal(nouveauPlateau,4,4,Carte(False,True,False,False,9))
+    setVal(nouveauPlateau,4,6,Carte(False,True,False,False,10))
+    setVal(nouveauPlateau,6,0,Carte(False,False,True,True,0))
+    setVal(nouveauPlateau,6,2,Carte(False,False,True,False,11))
+    setVal(nouveauPlateau,6,4,Carte(False,False,True,False,12))
+    setVal(nouveauPlateau,6,6,Carte(False,True,True,False,0))
     
+    cpt=0
+    for i in range(7):
+      for j in range(7):
+        if nouveauPlateau[i][j]==0:
+          nouveauPlateau[i][j]=listeCartesAmovibles[cpt]
+          cpt+=1
     
-    p["carteAmovible"]=0
+    p["carteAmovible"]=listeCartesAmovibles[-1]
 
     return p
 
@@ -85,8 +91,8 @@ def creerCartesAmovibles(tresorDebut,nbTresors):
       c=Carte(True,False,True,False)
       decoderMurs(c,code)
       listeCartesAmovibles.append(c)
-    for i in range(nbTresors):
-      mettreTresor(listeCartesAmovibles[i],[i+1+tresorDebut])
+    for i in range(nbTresors-tresorDebut+1):
+      mettreTresor(listeCartesAmovibles[i],i+tresorDebut)
     shuffle(listeCartesAmovibles)
     return listeCartesAmovibles
 
@@ -103,7 +109,11 @@ def prendreTresorPlateau(plateau,lig,col,numTresor):
                 numTresor: le numéro du trésor à prendre sur la carte
     resultat: un booléen indiquant si le trésor était bien sur la carte considérée
     """
-    pass
+    c=getVal(p["plateau"],lig,col)
+    if numTresor==prendreTresor(c):
+      return True
+    else:
+      return False
 
 def getCoordonneesTresor(plateau,numTresor):
     """
@@ -113,7 +123,11 @@ def getCoordonneesTresor(plateau,numTresor):
     resultat: un couple d'entier donnant les coordonnées du trésor ou None si
               le trésor n'est pas sur le plateau
     """
-    pass
+    for i in range(7):
+      for j in range(7):
+        if getTresor(p["plateau"][i][j])==numTresor:
+          return (i,j)
+
 
 def getCoordonneesJoueur(plateau,numJoueur):
     """
@@ -123,7 +137,10 @@ def getCoordonneesJoueur(plateau,numJoueur):
     resultat: un couple d'entier donnant les coordonnées du joueur ou None si
               le joueur n'est pas sur le plateau
     """
-    pass
+    for i in range(7):
+      for j in range(7):
+        if numJoueur in getListePions(p["plateau"][i][j]):
+          return (i,j)
 
 def prendrePionPlateau(plateau,lin,col,numJoueur):
     """
@@ -134,7 +151,8 @@ def prendrePionPlateau(plateau,lin,col,numJoueur):
                 numJoueur: le numéro du joueur qui correspond au pion
     Cette fonction ne retourne rien mais elle modifie le plateau
     """
-    pass
+    prendrePion(p["plateau"][lin][col],numJoueur)
+
 def poserPionPlateau(plateau,lin,col,numJoueur):
     """
     met le pion du joueur sur la carte qui se trouve en (lig,col) du plateau
@@ -144,7 +162,10 @@ def poserPionPlateau(plateau,lin,col,numJoueur):
                 numJoueur: le numéro du joueur qui correspond au pion
     Cette fonction ne retourne rien mais elle modifie le plateau
     """
-    pass
+    c=getVal(p["plateau"],lin,col)
+    poserPion(c,numJoueur)
+    
+    
 
 
 def accessible(plateau,ligD,colD,ligA,colA):
@@ -176,5 +197,17 @@ def accessibleDist(plateau,ligD,colD,ligA,colA):
     """
     pass
 if __name__=="__main__":
-  print(Plateau(2,10))
-  creerCartesAmovibles(14,20)
+  p=Plateau(2,34)
+  print(p)
+  print(prendreTresorPlateau(p,1,2,1))
+  print(getCoordonneesTresor(p,30))
+  print(p["plateau"])
+  print(getCoordonneesJoueur(p,2))
+  print(prendrePionPlateau(p,0,6,3))
+  print(p["plateau"])
+  print(getCoordonneesJoueur(p,2))
+  print(poserPionPlateau(p,6,6,3))
+  print(p["plateau"])
+
+
+
