@@ -48,7 +48,7 @@ def tresorTrouve(joueur):
         joueur le joueur
     la fonction ne retourne rien mais modifie le joueur
     """
-    joueur[1][0].pop(0)
+    joueur[1].pop(0)
 
 
 def getNbTresorsRestants(joueur):
@@ -57,7 +57,7 @@ def getNbTresorsRestants(joueur):
     paramètre: joueur le joueur
     résultat: le nombre de trésors attribués au joueur
     """
-    return len(joueur[1][0])
+    return len(joueur[1])
 
 def getNom(joueur):
     """

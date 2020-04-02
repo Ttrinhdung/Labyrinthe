@@ -165,13 +165,13 @@ def joueurCourantAFini(joueurs):
     paramètre: joueurs la liste des joueurs 
     résultat: un booleen indiquant si le joueur courant a fini
     """
-    jcourant=joueurs[0][1]
+    jcourant=joueurs[-1]
     fini=False
-    if (len(jcourant))==None:
+    if len((joueurs[jcourant][0][1]))==0:
       fini=True
     else:
       fini=False 
-    return fini 
+    return fini
 
 
 if __name__=="__main__":
@@ -192,4 +192,5 @@ if __name__=="__main__":
     print(nomJoueur(toto,1))
     print(prochainTresorJoueur(toto,2))
     print(numJoueurCourant(toto))
+    print(toto)
     print(joueurCourantAFini(toto))
