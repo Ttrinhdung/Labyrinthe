@@ -74,7 +74,7 @@ def changerJoueurCourant(joueurs):
     paramètres: joueurs la liste des joueurs
     cette fonction ne retourne rien mais modifie la liste des joueurs
     """
-    return joueurs[1]+1
+    return joueurs[-1]+1
 
 def getNbJoueurs(joueurs):
    """
@@ -90,7 +90,8 @@ def getJoueurCourant(joueurs):
     paramètre: joueurs la liste des joueurs
     résultat: le joueur courant
     """
-    return joueurs[-1] 
+    jcourant=joueurs[-1]
+    return joueurs[0][jcourant][0]
 
 def joueurCourantTrouveTresor(joueurs):
     """
@@ -119,7 +120,7 @@ def numJoueurCourant(joueurs):
     paramètre: joueurs la liste des joueurs
     résultat: le numéro du joueur courant
     """
-    return getJoueurCourant(joueurs)
+    return joueurs[-1]
     
     
 

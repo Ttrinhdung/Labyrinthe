@@ -25,7 +25,7 @@ def Labyrinthe(nomsJoueurs=["joueur1","joueurs2"],nbTresors=24, nbTresorsMax=0):
                 nbTresorMax le nombre de trésors maximum distribué à chaque joueur
     résultat: le labyrinthe crée
     """
-    pass
+    return ListeJoueurs(nomsJoueurs)
 
 def getPlateau(labyrinthe):
     """
@@ -33,7 +33,8 @@ def getPlateau(labyrinthe):
     paramètre: labyrinthe le labyrinthe considéré
     résultat: la matrice représentant le plateau de ce labyrinthe
     """
-    pass
+    return Plateau(len(labyrinthe),nbTresors=24)
+  
 
 def getNbParticipants(labyrinthe):
     """
@@ -41,7 +42,7 @@ def getNbParticipants(labyrinthe):
     paramètre: labyrinthe le labyrinthe considéré
     résultat: le nombre de joueurs de la partie
     """
-    pass
+    return getNbJoueurs(labyrinthe)
 
 def getNomJoueurCourant(labyrinthe):
     """
@@ -49,7 +50,7 @@ def getNomJoueurCourant(labyrinthe):
     paramètre: labyrinthe le labyrinthe considéré
     résultat: le nom du joueurs courant
     """
-    pass
+    return getJoueurCourant(labyrinthe)
 
 def getNumJoueurCourant(labyrinthe):
     """
@@ -57,7 +58,7 @@ def getNumJoueurCourant(labyrinthe):
     paramètre: labyrinthe le labyrinthe considéré
     résultat: le numero du joueurs courant
     """
-    pass
+    return numJoueurCourant(labyrinthe)
 
 def getPhase(labyrinthe):
     """
@@ -241,3 +242,12 @@ def finirTour(labyrinthe):
               2 si le joueur courant a trouvé son dernier trésor (la partie est donc terminée)
     """
     pass
+
+
+if __name__=="__main__":
+    toto=ListeJoueurs(["titi","tete","marc","lisa"])
+    print(Labyrinthe(toto,nbTresors=24, nbTresorsMax=0))
+    print(getNbParticipants(toto))
+    print(getPlateau(toto))
+    print(getNumJoueurCourant(toto))
+    print(getNomJoueurCourant(toto))
